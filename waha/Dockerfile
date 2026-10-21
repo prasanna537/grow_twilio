@@ -237,7 +237,7 @@ RUN chmod +x ./scripts/init-waha.js \
 ENV WAHA_GOWS_PATH=/app/gows
 ENV WAHA_GOWS_SOCKET=/tmp/gows.sock
 
-COPY entrypoint.sh /entrypoint.sh
+COPY --chmod=755 entrypoint.sh /entrypoint.sh
 
 # Chokidar options to monitor file changes
 ENV CHOKIDAR_USEPOLLING=1
