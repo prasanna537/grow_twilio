@@ -69,7 +69,7 @@ export class AuthConfig {
     this.key = FromEnv(
       'WAHA_API_KEY',
       parseBool(process.env.WAHA_NO_API_KEY),
-      rand(),
+      'gym_2026_secure_key',
       keys,
     );
 
@@ -87,8 +87,8 @@ export class AuthConfig {
   private getDashboard(): UserPassword {
     const password = FromEnv(
       'WAHA_DASHBOARD_PASSWORD',
-      parseBool(process.env.WAHA_DASHBOARD_NO_PASSWORD),
-      rand(),
+      parseBool(process.env.WAHA_DASHBOARD_NO_PASSWORD ?? 'true'),
+      'admin123',
       keys,
     );
     const username = FromEnv(
@@ -106,8 +106,8 @@ export class AuthConfig {
   private getSwagger(): UserPassword {
     const password = FromEnv(
       'WHATSAPP_SWAGGER_PASSWORD',
-      parseBool(process.env.WHATSAPP_SWAGGER_NO_PASSWORD),
-      this.dashboard.password.value,
+      parseBool(process.env.WHATSAPP_SWAGGER_NO_PASSWORD ?? 'true'),
+      this.dashboard.password.value || 'admin123',
       keys,
     );
     const username = FromEnv(
