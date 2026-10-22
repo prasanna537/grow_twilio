@@ -6,19 +6,19 @@ src/core/engines/gows/proto
 *.heapsnapshot
 .yarn
 example.ts
-.*sessions
-sessions
-.secrets
-.minio
-.media
-tokens
-files
+/.*sessions
+/sessions
+/.secrets
+/.minio
+/.media
+/tokens
+/files
 venv
-.wwebjs_auth
+/.wwebjs_auth
 src/test.ts
 src/test.js
 test.js
-.wwebjs_cache
+/.wwebjs_cache
 src/dashboard
 .eslintcache
 __pycache__
@@ -28,12 +28,16 @@ __pycache__
 /node_modules
 
 # Logs
-logs
+/logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+
+# Dashboard exclusion
+!dashboard/**
+
 
 # OS
 .DS_Store
