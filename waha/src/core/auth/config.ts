@@ -69,7 +69,7 @@ export class AuthConfig {
     this.key = FromEnv(
       'WAHA_API_KEY',
       parseBool(process.env.WAHA_NO_API_KEY),
-      'gym_2026_secure_key',
+      'waha-key-123',
       keys,
     );
 

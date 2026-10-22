@@ -42,7 +42,7 @@ if [ -n "$key" ]; then
     export WAHA_API_KEY="$key"
   else
     # Hash the key using sha512sum
-    HASHED_KEY=$(echo -n "$key" | sha512sum | awk '{print $1}')
+    HASHED_KEY=$(printf '%s' "$key" | sha512sum | awk '{print $1}')
     export WAHA_API_KEY="sha512:$HASHED_KEY"
   fi
 fi

@@ -28,21 +28,30 @@ import {
   WAHAErrorResponse,
 } from "./types";
 
-const DEFAULT_BASE_URL =
-  process.env.NEXT_PUBLIC_WAHA_BASE_URL || "http://localhost:3000";
+const DEFAULT_BASE_URL = process.env.NEXT_PUBLIC_WAHA_BASE_URL || "";
 const DEFAULT_API_KEY = process.env.NEXT_PUBLIC_WAHA_API_KEY || "";
 
 export function getSettings(): ApiSettings {
   if (typeof window === "undefined") {
-    return { baseUrl: DEFAULT_BASE_URL, apiKey: DEFAULT_API_KEY };
+    return {
+      baseUrl:
+        process.env.WAHA_BASE_URL ||
+        process.env.NEXT_PUBLIC_WAHA_BASE_URL ||
+        "http://localhost:3010",
+      apiKey:
+        process.env.WAHA_API_KEY ||
+        process.env.NEXT_PUBLIC_WAHA_API_KEY ||
+        "",
+    };
   }
+
+  const storedBaseUrl = localStorage.getItem("waha_base_url");
+  const storedApiKey = localStorage.getItem("waha_api_key");
+
   return {
-    baseUrl:
-      localStorage.getItem("waha_base_url") ||
-      DEFAULT_BASE_URL,
-    apiKey:
-      localStorage.getItem("waha_api_key") ||
-      DEFAULT_API_KEY,
+    // If a custom URL is stored in localStorage, use it. Otherwise use relative "" to route through Next.js proxy
+    baseUrl: storedBaseUrl !== null ? storedBaseUrl : DEFAULT_BASE_URL,
+    apiKey: storedApiKey !== null ? storedApiKey : DEFAULT_API_KEY,
   };
 }
 
