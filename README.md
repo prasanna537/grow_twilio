@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# grow_twilio — WhatsApp Automation Platform
 
-## Getting Started
+Powered by **WAHA** (WhatsApp HTTP API).
 
-First, run the development server:
+## Services
+
+| Service | Port | Description |
+|---|---|---|
+| WAHA API | `3010` | WhatsApp REST API (NestJS) |
+| WAHA Dashboard | `3001` | Web UI for sessions, chats, webhooks |
+
+## Quick Start
+
+### 1. Start the WAHA API (backend)
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd waha
+node dist/main
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Reads config from `waha/.env`. Default API key: `waha-key-123`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Start the Dashboard (UI)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd waha/dashboard
+npm run dev
+```
 
-## Learn More
+Open **http://localhost:3001** in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+## Credentials
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| | Value |
+|---|---|
+| Dashboard | `admin` / `admin123` |
+| API Key | `waha-key-123` |
+| Swagger UI | http://localhost:3010/api/swagger |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## What you can do
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 📱 **Connect WhatsApp** — Create a session, scan QR code
+- 💬 **View Chats** — Browse messages and conversation history
+- 📤 **Send Messages** — Manual or via REST API for automation
+- 🔗 **Webhooks** — Get real-time events pushed to your endpoint
+- 📖 **API Docs** — Full Swagger at `/api/swagger`
